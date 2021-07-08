@@ -2,6 +2,14 @@
     display: grid;
     grid-template-columns: 30fr 30fr 30fr;
     grid-template-rows: 30vh 30vh 30vh;
+    grid-template-areas: 
+    "header header header"
+    "menu main right"
+    "menu footer footer";
+    /* utilisation d'un background color couplé à un gap pour avoir les lignes rouges */
+    background-color: #FF3333;
+    grid-gap: 3px;
+    gap: 3px;
 }
 
 .header,
@@ -10,47 +18,65 @@
 .footer,
 .menu {
     background-color: #FFCCCC;
-    border: solid 1px#FF3333;
-    text-align: center;
-    line-height: 30vh;
+    /* les bordures ne sont pas présentes sur l'extérieur du cadre principal */
+    /* 2 méthodes pour aligner V+H: */
+    /* celle ci (pas dingue, il faut mettre line height = height de la box, ce qui demande une double modification quand on veut changer la taille de la box */
+    /* text-align: center;
+    line-height: 30vh; */
+    /* Et celle ci, plus pratique pour faire des modifs, à base de display flex, justify-content center et align-items: center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 30px;
+    
 }
 
 .header {
-    grid-area: 1 / 1 / 1 / 4;
+    /* grid-area: 1 / 1 / 1 / 4; */
+    grid-area: header;
 }
 
 .menu {
-    grid-area: 2 / 1 / 4 / 1;
+    /* grid-area: 2 / 1 / 4 / 1; */
+    grid-area: menu;
 }
 
 .main {
-    grid-area: 2 / 2 / 2 / 2;
+    /* grid-area: 2 / 2 / 2 / 2; */
+    grid-area: main;
 }
 
 .right {
-    grid-area: 2 / 3 / 2 / 3;
+    /* grid-area: 2 / 3 / 2 / 3; */
+    grid-area: right;
 }
 
 .footer {
-    grid-area: 3 / 2 / 3 / 4;
+    /* grid-area: 3 / 2 / 3 / 4; */
+    grid-area: footer;
 }
 
 @media screen and (max-width: 640px) {
     #babibabi {
         grid-template-columns: 90fr;
         grid-template-rows: 18vh 18vh 18vh 18vh 18vh;
+        grid-template-areas: 
+        "header"
+        "menu"
+        "main"
+        "right"
+        "footer";
     }
 
     .header,
-.main,
-.right,
-.footer,
-.menu {
-    line-height: 18vh;
-    font-size: 50px;
-}
-
+    .main,
+    .right,
+    .footer,
+    .menu {
+        line-height: 18vh;
+        font-size: 50px;
+    }
+/* 
     .header {
         grid-area: 1 / 1 / 1 / 1;
     }
@@ -69,5 +95,5 @@
 
     .footer {
         grid-area: 5 / 1 / 5 / 1;
-    }
+    } */
 }
